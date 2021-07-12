@@ -1,0 +1,25 @@
+---
+# Se crean las reglas de firewall para nfs
+- name: Firewall rules nfs
+  firewalld:
+    service: nfs
+    permanent: yes
+    state: enabled
+
+- name: Firewall rules rpc-bind
+  firewalld:
+    service: rpc-bind
+    permanent: yes
+    state: enabled
+
+- name: Firewall rules mountd
+  firewalld:
+    service: mountd
+    permanent: yes
+    state: enabled
+
+# Se reinicia el servicio para que las reglas tengan efecto
+- name: reload service firewalld
+  systemd:
+    name: firewalld
+    state: reloaded

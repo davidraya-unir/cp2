@@ -1,0 +1,9 @@
+---
+# Deshabilita SELinux porque no lo vamos a usar con Kubernetes
+- name: Disable SELinux
+  selinux:
+    state: disabled
+
+# Reinicia el sistema para que los cambios tengan efecto (Espera a que termine de reiniciar para continuar con la siguiente tarea)
+- name: reboot system
+  reboot:

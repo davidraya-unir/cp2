@@ -1,0 +1,9 @@
+---
+- name: create nfs
+  hosts: nfs
+  vars_files:
+    - "group_vars/config.yaml"
+  gather_facts: false
+  become: yes
+  roles:
+    - nfs

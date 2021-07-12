@@ -1,0 +1,15 @@
+
+# Comprobamos si swap está activado y alamacenamos su tamaño
+- name: Calculate size
+  shell : free -m | grep Swap | awk '{print $2}'
+  register: swap_size
+
+# Deshabilitamos swap (si esta activado y su tamaño es mayor a cero)
+- name: Disable SWAP
+  command: swapoff -a
+  when: (swap_size.stdout_lines[0] | int) > 0
+
+# Elimina la linea correspondiente de fstab (si esta activado y su tamaño es mayor a cero)
+- name: Delete SWAP in fstab 
+  command: sed -i '/swap/d' /etc/fstab
+  when: (swap_size.stdout_lines[0] | int) > 0

@@ -1,0 +1,15 @@
+# Instalación Docker
+- name: install docker repository
+  command: dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+
+- name: Install docker 
+  dnf: 
+    name: docker-ce-20.10.6-3.el8
+    state: present
+
+# Arranca y hablilita el servicio Docker
+- name: enable docker
+  systemd:
+    name: docker
+    state: started
+    enabled: yes

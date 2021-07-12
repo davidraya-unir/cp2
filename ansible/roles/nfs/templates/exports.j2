@@ -1,0 +1,3 @@
+{% for item in ips_exports_nfs %}
+/srv/nfs    {{ item }}(rw,sync)
+{% endfor %}

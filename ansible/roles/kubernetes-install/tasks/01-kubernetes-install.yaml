@@ -1,0 +1,22 @@
+--- 
+# Copia el template de repositorio kubernetes
+- name: Copy kubernetes repo
+  template:
+    src: kubernetes.j2
+    dest: /etc/yum.repos.d/kubernetes.repo
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Install kubernetes 
+  dnf: 
+    name: [kubelet, kubeadm, kubectl]
+    state: present
+    disable_excludes: kubernetes
+
+# Arranca y hablilita el servicio kubelet
+- name: enable kubelet
+  systemd:
+    name: kubelet
+    state: started
+    enabled: yes

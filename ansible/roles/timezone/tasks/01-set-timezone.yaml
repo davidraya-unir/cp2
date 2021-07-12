@@ -1,0 +1,22 @@
+---
+# Establecemos el timezone guardado en la varibale
+- name: set timezone
+  timezone: 
+    name: "{{ timezone }}"
+  
+# Instalación del servicio Chrony para la sincronización las maquinas con servicios NTP
+- name: install chrony
+  dnf:
+    name: chrony
+    state: present
+
+# Arranca y hablilita el servicio Chrony
+- name: enable chrony
+  systemd:
+    name: chronyd
+    state: started
+    enabled: yes
+
+# Sicronización con servidores NTP
+- name: run timedatectl
+  command: timedatectl set-ntp true

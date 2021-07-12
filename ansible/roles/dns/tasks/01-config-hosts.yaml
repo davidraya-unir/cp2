@@ -1,0 +1,9 @@
+--- 
+# Configura las distintas dns en el fichero hosts
+- name: config hosts file.
+  lineinfile:
+    path: /etc/hosts
+    line: '{{item.ip}} {{item.dns}}'
+    state: present
+  with_items:
+    - '{{kubernetes_nodes}}'

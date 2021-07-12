@@ -1,0 +1,7 @@
+timezone: 'Europe/Madrid'
+ips_exports_nfs: ['192.168.1.51', '192.168.1.52']
+kubernetes_nodes: [
+  {ip: '192.168.1.51', dns: 'master.local', type: 'master'},
+  {ip: '192.168.1.52', dns: 'worker.local', type: 'worker'},
+  {ip: '192.168.1.51', dns: 'nfs.local', type: 'nfs'}
+]

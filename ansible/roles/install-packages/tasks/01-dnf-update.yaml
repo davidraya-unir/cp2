@@ -1,0 +1,6 @@
+---
+# Nos aseguramos que las maquinas estan actualizadas
+- name: update dnf
+  dnf:
+    update_only: yes
+  become: yes

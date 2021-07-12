@@ -1,0 +1,14 @@
+--- 
+# Instalamos paquetes NFS
+- name: Install NFS packages
+  dnf: 
+    name: [nfs-utils, net-tools]
+    state: present
+    update_cache: true
+
+# Hablita y arrancar el servicio nfs-server
+- name: enable nfs-server
+  systemd:
+    name: nfs-server
+    state: started
+    enabled: yes

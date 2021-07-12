@@ -1,0 +1,11 @@
+---
+- name: config environments
+  hosts: master, worker
+  vars_files:
+    - "group_vars/config.yaml"
+  gather_facts: false
+  become: yes
+  roles:
+    - install-packages
+    - timezone
+    - selinux 

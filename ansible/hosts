@@ -1,0 +1,11 @@
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+
+[master]
+master.local ansible_user=ansible dns=master.local ip=192.168.1.51
+
+[worker]
+worker.local ansible_user=ansible dns=worker.local ip=192.168.1.52
+
+[nfs]
+nfs.local ansible_user=ansible dns=nfs.local ip=192.168.1.51

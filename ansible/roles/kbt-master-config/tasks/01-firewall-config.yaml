@@ -1,0 +1,35 @@
+---
+- name: Config firewall for kubernetes services
+  firewalld:
+    port: "{{ item }}"
+    permanent: yes
+    state: enabled
+  with_items:
+    - 6443/tcp
+    - 2379-2380/tcp
+    - 10250-10252/tcp
+    - 10255/tcp
+
+- name: Grant workers access
+  firewalld:
+    rich_rule: "rule family=ipv4 source address={{ item.ip }}/24 accept"
+    permanent: yes
+    state: enabled
+  with_items: 
+    - '{{kubernetes_nodes}}'
+  when: item.type == 'worker'
+
+- name: Grant workers access
+  firewalld:
+    rich_rule: rule family=ipv4 source address={{ ansible_docker0.ipv4.network }}/16 accept
+    zone: public
+    permanent: yes
+    state: enabled
+
+
+# Se reinicia el servicio para que las reglas tengan efecto
+- name: reload service firewalld
+  systemd:
+    name: firewalld
+    state: reloaded
+

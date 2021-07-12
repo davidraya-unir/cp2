@@ -1,0 +1,19 @@
+---
+# Hablita y arranca el servicio firewall
+- name: enable firewalld
+  systemd:
+    name: firewalld
+    state: started
+    enabled: yes
+
+- name: Firewall masquerade
+  firewalld:
+    masquerade: enable
+    permanent: yes
+    state: enabled
+
+# Se reinicia el servicio para que las reglas tengan efecto
+- name: reload service firewalld
+  systemd:
+    name: firewalld
+    state: reloaded

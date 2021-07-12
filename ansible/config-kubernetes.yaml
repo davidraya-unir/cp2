@@ -1,0 +1,24 @@
+---
+- name: config environments
+  hosts: master,worker
+  vars_files:
+    - "group_vars/config.yaml"
+  gather_facts: false
+  become: yes
+  roles:
+    - dns
+    - newtwork-kubernetes
+    - swap
+    - docker-install
+    - kubernetes-install
+
+- name: config master
+  hosts: master
+  vars_files:
+    - "group_vars/config.yaml"
+  gather_facts: true
+  become: true
+  roles:
+    - kbt-master-config
+
+

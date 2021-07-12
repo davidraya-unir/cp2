@@ -1,0 +1,36 @@
+--- 
+- name: Config kubeadm
+  command: kubeadm config images pull
+
+- name: Install CNI Plugin
+  shell: kubeadm init --pod-network-cidr 192.169.0.0/16 >> /root/kubeadm.out
+
+- name: export KUBECONFIG
+  lineinfile:
+    dest: /etc/environment
+    state: present
+    regexp: '^KUBECONFIG'
+    line: 'KUBECONFIG=/etc/kubernetes/admin.conf'
+
+- name: Creates .kube
+  file:
+    path: /root/.kube
+    state: directory
+    owner: "{{ ansible_effective_user_id }}"
+    group: "{{ ansible_effective_group_id }}"
+    mode: '1777'
+
+- name: Copy file kubernetes admin.conf
+  copy:
+    remote_src: yes
+    src: /etc/kubernetes/admin.conf
+    dest: /root/.kube/config
+    owner: "{{ ansible_effective_user_id }}"
+    group: "{{ ansible_effective_group_id }}"
+    mode: '0644'
+
+- name: Change kubeconfig file permission
+  file:
+    path: /root/.kube/config 
+    owner: "{{ ansible_effective_user_id }}"
+    group: "{{ ansible_effective_group_id }}"

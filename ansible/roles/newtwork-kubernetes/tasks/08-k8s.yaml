@@ -1,0 +1,13 @@
+--- 
+# Copia el template de export k8s
+- name: Copy k8s file.
+  template:
+    src: k8s.j2
+    dest: /etc/sysctl.d
+    owner: root
+    group: root
+    mode: 0644
+
+# Recarga sysctl
+- name: Reload sysctl
+  command: sysctl --system
