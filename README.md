@@ -2,5 +2,5 @@
 
 Despliegue de una aplicación en Kubernetes creando una arquitectura cloud en azure
 
-- Arquitectectura Azure
-- Despliegue Kubernetes e instalación de una aplicación
+- Arquitectectura Azure (Terraform) 
+- Despliegue Kubernetes e instalación de una aplicación (Ansible)
