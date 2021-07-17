@@ -1,0 +1,27 @@
+---
+
+- name: Config firewall sdn workers
+  firewalld:
+    port: "{{ item }}"
+    permanent: yes
+    state: enabled
+  with_items:
+    - 8285/udp
+    - 8472/udp
+  when: server == 'azure'
+
+- name: Config firewall workers
+  firewalld:
+    zone: public
+    port: "{{ item }}"
+    permanent: yes
+    state: enabled
+  with_items:
+    - 10250/tcp
+    - 30000-32767/tcp
+
+# Se reinicia el servicio para que las reglas tengan efecto
+- name: reload service firewalld
+  systemd:
+    name: firewalld
+    state: reloaded

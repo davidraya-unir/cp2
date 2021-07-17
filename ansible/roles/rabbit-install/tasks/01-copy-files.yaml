@@ -1,0 +1,29 @@
+--- 
+# Copia el template de export nfs-pv.j2
+- name: Copy nfs-pv.
+  template:
+    src: nfs-pv.j2
+    dest: /home/nfs-pv.yaml
+    owner: root
+    group: root
+    mode: 0644
+  vars:
+    nfs_address: "{{ kubernetes_nodes | json_query(\"[?type=='nfs'].ip\") }}"
+
+# Copia el template de export nfs-pvc.j2
+- name: Copy nfs-pvc.
+  template:
+    src: nfs-pvc.j2
+    dest: /home/nfs-pvc.yaml
+    owner: root
+    group: root
+    mode: 0644
+
+# Copia el template de export rabbit.j2
+- name: Copy rabbit file
+  template:
+    src: rabbit.j2
+    dest: /home/rabbit.yaml
+    owner: root
+    group: root
+    mode: 0644

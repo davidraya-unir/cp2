@@ -1,0 +1,4 @@
+---
+- include_tasks: 01-copy-files.yaml
+- include_tasks: 02-rabbit-install.yaml
+- include_tasks: 03-firewall-config.yaml

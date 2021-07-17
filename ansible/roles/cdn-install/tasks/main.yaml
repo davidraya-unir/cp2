@@ -1,0 +1,7 @@
+---
+
+- include_tasks: 01-calico.yaml
+  when: server != 'azure'
+
+- include_tasks: 02-sdn-azure.yaml
+  when: server == 'azure'

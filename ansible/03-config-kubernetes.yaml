@@ -20,5 +20,15 @@
   become: true
   roles:
     - kbt-master-config
+    - cdn-install
+
+- name: config workers
+  hosts: worker
+  vars_files:
+    - "group_vars/config.yaml"
+  gather_facts: true
+  become: true
+  roles:
+    - kbt-worker-config
 
 

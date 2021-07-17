@@ -1,0 +1,8 @@
+- name: Install Ingress Controller
+  shell: kubectl apply -f https://raw.githubusercontent.com/haproxytech/kubernetes-ingress/v1.5/deploy/haproxy-ingress.yaml
+
+- name: Create namespace for ingress controller
+  shell: kubectl get pods --namespace=haproxy-controller
+
+
+  

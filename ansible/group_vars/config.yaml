@@ -5,3 +5,4 @@ kubernetes_nodes: [
   {ip: '192.168.1.52', dns: 'worker.local', type: 'worker'},
   {ip: '192.168.1.51', dns: 'nfs.local', type: 'nfs'}
 ]
+server: 'local' # local o azure

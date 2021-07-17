@@ -1,0 +1,19 @@
+--- 
+
+- name: Install Tigera
+  command: kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
+
+- name: Download file Calico definition
+  get_url:
+    url: https://docs.projectcalico.org/manifests/custom-resources.yaml
+    dest: /etc/custom-resources.yaml
+    mode: '0644'
+
+- name: Change Network cidr
+  replace:
+    path: /etc/custom-resources.yaml
+    regexp: 'cidr:(\s+.*)?$'
+    replace: 'cidr: 192.169.0.0/16'
+
+- name: Install Calico
+  command: kubectl apply -f /etc/custom-resources.yaml

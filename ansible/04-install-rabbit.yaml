@@ -1,0 +1,9 @@
+--- 
+- name: Install rabbit
+  hosts: master
+  vars_files:
+    - "group_vars/config.yaml"
+  become: true
+  roles:
+    - rabbit-install
+

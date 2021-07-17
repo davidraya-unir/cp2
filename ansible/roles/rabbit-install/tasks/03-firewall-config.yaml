@@ -1,0 +1,18 @@
+---
+- name: Config firewall for rabbit
+  firewalld:
+    port: "{{ item }}"
+    permanent: yes
+    state: enabled
+  with_items:
+    - 15672/tcp
+    - 5672/tcp
+
+# Se reinicia el servicio para que las reglas tengan efecto
+- name: reload service firewalld
+  systemd:
+    name: firewalld
+    state: reloaded
+
+- name: Redirect port for manage portal
+  shell: kubectl port-forward --address 0.0.0.0 service/rabbit-service -n rabbit 15672:15672 &

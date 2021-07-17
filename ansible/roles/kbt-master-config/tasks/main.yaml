@@ -2,3 +2,4 @@
 
 - include_tasks: 01-firewall-config.yaml
 - include_tasks: 02-kubeadm.yaml
+- include_tasks: 03-ingress-controller.yaml

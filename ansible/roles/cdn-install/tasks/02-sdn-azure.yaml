@@ -1,0 +1,19 @@
+---
+
+- name: Config firewall sdn master
+  firewalld:
+    port: "{{ item }}"
+    permanent: yes
+    state: enabled
+  with_items:
+    - 8285/udp
+    - 8472/udp
+
+# Se reinicia el servicio para que las reglas tengan efecto
+- name: reload service firewalld
+  systemd:
+    name: firewalld
+    state: reloaded
+
+- name: Install snd
+  command: kubectl apply -f https://docs.projectcalico.org/manifests/canal.yaml

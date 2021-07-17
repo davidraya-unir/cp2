@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbit-app
+  namespace: rabbit
+  labels:
+    app: rabbit-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rabbit-app
+  template:
+    metadata:
+      labels:
+        app: rabbit-app
+    spec:
+      containers:
+      - name: rabbit-app
+        image: rabbitmq:3-management-alpine
+        imagePullPolicy: Always
+        ports:
+          - name: http
+            protocol: TCP
+            containerPort: 15672
+            hostPort: 15672
+          - name: amqp
+            protocol: TCP
+            containerPort: 5672
+            hostPort: 5672
+        readinessProbe:           
+          exec:                   
+            command: ["true"]     
+          initialDelaySeconds: 30 
+          timeoutSeconds: 5        
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: rabbit-service
+    namespace: rabbit
+spec:
+    selector:
+      app: rabbit-app
+    ports:
+    - name: http
+      protocol: TCP
+      port: 15672
+      targetPort: 15672
+    - name: amqp
+      protocol: TCP
+      port: 5672
+      targetPort: 5672
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: rabbit-ingress
+  namespace: rabbit
+  labels:
+    app: rabbit-app
+spec:
+  rules:
+  - host: rabbit.local
+    http:
+      paths:
+      - path: /
+        pathType: "Prefix"
+        backend:
+          service:
+            name: rabbit-service
+            port:
+              number: 15672
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: haproxy-configmap
+  namespace: rabbit
+data:
+  servers-increment: "42"
+  ssl-redirect: "OFF"
