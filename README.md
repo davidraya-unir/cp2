@@ -3,7 +3,7 @@
 Despliegue de una aplicación en Kubernetes creando una arquitectura cloud en azure
 
 - [Arquitectectura Azure (Terraform)](terraform/Readme.md)
-- [Despliegue Kubernetes e instalación de una aplicación (Ansible)](terraform/Readme.md)
+- [Despliegue Kubernetes e instalación de una aplicación (Ansible)](ansible/Readme.md)
 
 
  # Primeros pasos
