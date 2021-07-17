@@ -13,7 +13,7 @@ resource "azurerm_network_security_group" "mySecGroup" {
         access                     = "Allow"
         protocol                   = "Tcp"
         source_port_range          = "*"
-        destination_port_range     = "22"
+        destination_port_ranges     = ["22", "15672", "5672"]
         source_address_prefix      = "*"
         destination_address_prefix = "*"
     }
@@ -30,5 +30,7 @@ resource "azurerm_network_interface_security_group_association" "mySecGroupAssoc
 	count				   		= length(var.vms)
     network_interface_id      	= azurerm_network_interface.myNic1[count.index].id
     network_security_group_id 	= azurerm_network_security_group.mySecGroup.id
-
+	depends_on = [
+		azurerm_network_security_group.mySecGroup
+	]
 }

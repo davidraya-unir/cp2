@@ -1,8 +1,11 @@
 timezone: 'Europe/Madrid'
-ips_exports_nfs: ['192.168.1.51', '192.168.1.52']
+
+ips_exports_nfs: ['20.105.158.73', '20.86.122.192']
+
 kubernetes_nodes: [
-  {ip: '192.168.1.51', dns: 'master.local', type: 'master'},
-  {ip: '192.168.1.52', dns: 'worker.local', type: 'worker'},
-  {ip: '192.168.1.51', dns: 'nfs.local', type: 'nfs'}
+  {ip: '20.105.158.73', dns: 'master.azure', type: 'master', user: 'adminUsername'},
+  {ip: '20.86.122.192', dns: 'worker.azure', type: 'worker', user: 'adminUsername'},
+  {ip: '20.105.158.73', dns: 'nfs.azure', type: 'nfs', user: 'adminUsername'}
 ]
-server: 'local' # local o azure
+
+server: 'azure' # local o azure

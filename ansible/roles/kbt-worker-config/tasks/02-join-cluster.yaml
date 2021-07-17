@@ -1,7 +1,7 @@
 - name: get command join kubernetes from kubeadm.out
-  shell: ssh ansible@master.local kubeadm token create --print-join-command
+  shell: ssh adminUsername@master.azure sudo kubeadm token create --print-join-command
   register: result
   delegate_to: localhost
-
+  
 - name: execute command kubeadm join
   shell: "{{ result.stdout }}"

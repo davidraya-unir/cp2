@@ -3,11 +3,11 @@
   shell: kubectl create namespace rabbit
 
 - name: Create persistent volume
-  shell: kubectl apply -f nfs-pv.yaml
+  shell: kubectl apply -f /home/nfs-pv.yaml
 
 - name: Create persistent volume claim
-  shell: kubectl apply -f nfs-pvc.yaml
+  shell: kubectl apply -f /home/nfs-pvc.yaml
 
 - name: Install rabbit image
-  shell: kubectl apply -f rabbit.yaml
+  shell: kubectl apply -f /home/rabbit.yaml
 

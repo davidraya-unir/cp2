@@ -3,7 +3,7 @@
   hosts: nfs
   vars_files:
     - "group_vars/config.yaml"
-  gather_facts: false
+  gather_facts: true
   become: yes
   roles:
     - nfs
