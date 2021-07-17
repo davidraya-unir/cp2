@@ -109,3 +109,25 @@ Terraform will perform the following actions:
 ```
 
 ____________________________________________________________________________________________________________________________________________  
+- Aplicamos el plan
+```console
+[root@localhost terraform]# terraform apply
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the
+following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # azurerm_linux_virtual_machine.myVM1[0] will be created
+  + resource "azurerm_linux_virtual_machine" "myVM1" {
+...
+...
+azurerm_linux_virtual_machine.myVM1[1]: Still creating... [2m50s elapsed]
+azurerm_linux_virtual_machine.myVM1[1]: Creation complete after 2m55s [id=/subscriptions/fecde38a-1a40-4194-901a-**********/resourceGroups/kubernetes_rg/providers/Microsoft.Compute/virtualMachines/worker01-vm]
+
+Apply complete! Resources: 14 added, 0 changed, 0 destroyed.
+[root@localhost terraform]#
+```
+
+____________________________________________________________________________________________________________________________________________  
