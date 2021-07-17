@@ -20,3 +20,17 @@ Despliegue de una aplicación en Kubernetes creando una arquitectura cloud en az
 >  ...
 >  [root@localhost ~]# sudo dnf install azure-cli
 >  ```
+>
+> - Login Azure
+> ```console
+> [root@localhost ~]# az login
+> To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code CWEXTYCVC to authenticate.
+> ``` 
+>
+> - Instalar git y clonar repo
+> ```console
+> [root@localhost ~]# sudo dnf install git -y
+> ...
+> 
+> ```
+
