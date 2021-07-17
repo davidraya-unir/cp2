@@ -23,7 +23,9 @@
 - Modificamos de configuración de Ansible [group_vars/config.yaml](group_vars/config.yaml) con las ips correspondientes
 ```console
 timezone: 'Europe/Madrid'
+
 ips_exports_nfs: ['192.168.1.51', '192.168.1.52']
+
 kubernetes_nodes: [
   {ip: '192.168.1.51', dns: 'master.local', type: 'master'},
   {ip: '192.168.1.52', dns: 'worker.local', type: 'worker'},
@@ -31,4 +33,12 @@ kubernetes_nodes: [
 ]
 server: 'local' # local o azure
 ```
+# Ejecución de los playbooks
 
+- Configuración inicial de entornos
+
+Realiza la actulazación de paquetes, configuración de la zona horaria y deshabilita SELinux
+
+```console
+[root@localhost cp2]# ansible-playbook -i hosts 01-config-init.yaml
+```
