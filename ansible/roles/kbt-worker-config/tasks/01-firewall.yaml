@@ -1,4 +1,6 @@
 ---
+######################################################################
+# Configuración del firewall 
 
 - name: Config firewall sdn workers
   firewalld:

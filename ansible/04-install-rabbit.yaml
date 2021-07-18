@@ -1,3 +1,5 @@
+######################################################################
+# Instala una imagen de RabbitMQ sobre la instalación de kubernetes
 --- 
 - name: Install rabbit
   hosts: master

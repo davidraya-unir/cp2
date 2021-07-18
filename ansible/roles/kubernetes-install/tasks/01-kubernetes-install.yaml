@@ -1,4 +1,7 @@
 --- 
+######################################################################
+# Realiza la instalación de Kubernetes y habilita el servicio kubelet
+
 # Copia el template de repositorio kubernetes
 - name: Copy kubernetes repo
   template:

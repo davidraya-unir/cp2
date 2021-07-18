@@ -1,4 +1,8 @@
 ---
+######################################################################
+# Crea el volume group y logical volume y lo monta
+
+# Busca el disco que esta libre para crear el nfs
 - name: identifica el primer disco libre
   set_fact:
     disks: "/dev/{{ item.key }}"

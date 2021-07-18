@@ -1,3 +1,6 @@
+######################################################################
+# Realiza la conifguración e instalación de Kubernetes y Docker en 
+# los nodos master y workers
 ---
 - name: config environments
   hosts: master,worker
@@ -12,6 +15,8 @@
     - docker-install
     - kubernetes-install
 
+######################################################################
+# Configura Kubernetes en el nodo master e instala un CDN
 - name: config master
   hosts: master
   vars_files:
@@ -22,6 +27,9 @@
     - kbt-master-config
     - cdn-install
 
+######################################################################
+# Une los nodos worker al master de Kubernetes y 
+# realiza la configuración
 - name: config workers
   hosts: worker
   vars_files:

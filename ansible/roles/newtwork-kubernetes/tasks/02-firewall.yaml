@@ -1,4 +1,7 @@
 ---
+######################################################################
+# Configuración del firewall y habilita masquerade
+
 # Hablita y arranca el servicio firewall
 - name: enable firewalld
   systemd:

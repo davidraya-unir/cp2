@@ -1,5 +1,6 @@
 ---
-
+######################################################################
+# Instala el SDN de Azure para la instalación en azure
 - name: Config firewall sdn master
   firewalld:
     port: "{{ item }}"

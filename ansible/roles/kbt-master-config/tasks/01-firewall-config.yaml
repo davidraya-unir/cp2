@@ -1,4 +1,7 @@
 ---
+######################################################################
+# Configuración de firewall y da el acceso a los workers al mismo
+# a los workers y a la red de docker
 - name: Config firewall for kubernetes services
   firewalld:
     port: "{{ item }}"
@@ -19,7 +22,7 @@
     - '{{kubernetes_nodes}}'
   when: item.type == 'worker'
 
-- name: Grant workers access
+- name: Grant docker network access
   firewalld:
     rich_rule: rule family=ipv4 source address={{ ansible_docker0.ipv4.network }}/16 accept
     zone: public

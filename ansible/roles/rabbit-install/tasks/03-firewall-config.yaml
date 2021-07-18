@@ -1,4 +1,7 @@
 ---
+######################################################################
+# Configuración las reglas de firewall 
+
 - name: Config firewall for rabbit
   firewalld:
     port: "{{ item }}"

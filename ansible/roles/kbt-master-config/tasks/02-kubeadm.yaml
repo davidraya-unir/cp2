@@ -1,4 +1,7 @@
 --- 
+######################################################################
+# Configuración kubeadm e instalacion del plugin CNI 
+
 - name: Config kubeadm
   command: kubeadm config images pull
 

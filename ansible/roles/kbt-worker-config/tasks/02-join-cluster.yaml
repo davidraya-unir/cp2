@@ -1,4 +1,7 @@
-- name: get command join kubernetes from kubeadm.out
+######################################################################
+# Une los nodos workers al master de kubernetes 
+
+- name: get command join kubernetes 
   shell: ssh adminUsername@master.azure sudo kubeadm token create --print-join-command
   register: result
   delegate_to: localhost

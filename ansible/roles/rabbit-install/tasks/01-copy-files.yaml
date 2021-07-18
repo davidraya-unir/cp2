@@ -1,4 +1,7 @@
 --- 
+######################################################################
+# Copia los ficheros yaml para la instalación de la imagen 
+
 # Copia el template de export nfs-pv.j2
 - name: Copy nfs-pv.
   template:

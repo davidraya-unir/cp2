@@ -1,3 +1,8 @@
+---
+######################################################################
+# Instalacion del Ingress Controller (haproxy) y creacion 
+# crea un namespace para el mismo
+
 - name: Install Ingress Controller
   shell: kubectl apply -f https://raw.githubusercontent.com/haproxytech/kubernetes-ingress/v1.5/deploy/haproxy-ingress.yaml
 

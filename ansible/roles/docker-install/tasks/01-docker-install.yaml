@@ -1,3 +1,6 @@
+######################################################################
+# Instala y habilita Docker
+
 # Instalación Docker
 - name: install docker repository
   command: dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo

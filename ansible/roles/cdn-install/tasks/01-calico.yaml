@@ -1,5 +1,6 @@
 --- 
-
+######################################################################
+# Instala el CDN de Calico para la instalación en local
 - name: Install Tigera
   command: kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
 

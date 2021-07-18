@@ -1,3 +1,5 @@
+######################################################################
+# Realiza la conifguración inicial de los nodos master y workers
 ---
 - name: config environments
   hosts: master, worker
